@@ -1,0 +1,78 @@
+<!--
+  Generated template for the AuditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar color="primary">
+    <ion-title  >{{Pagetitle}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="attachmentPage()"><ion-icon name="attach"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+  <!--<ion-toolbar>
+    <ion-title >Compliance Documents</ion-title>
+    <ion-buttons end>
+      <button (click)="openDescription()" ion-button icon-only>
+        View
+      </button>
+    </ion-buttons>
+  </ion-toolbar>-->
+</ion-header>
+
+
+<ion-content >
+  <ion-item text-wrap>
+    <ion-list>
+      <p><b>{{standardtitle}}</b></p>
+      <b>Description:</b><p [innerHtml]="description"></p>
+    </ion-list>
+  </ion-item>
+  <ion-item-divider color="light">
+    Image
+
+  </ion-item-divider>
+  <div >
+
+    <div >
+
+
+    <img class="one-image"  *ngFor="let item of jsonImage"  style="height:120px;"  src="{{item.ImageUrl}}"   #images (click)="imageOption(i,images)" />
+      <!--<img class="one-image"   *ngIf="item.fileType == 'I'"  style="height:120px;" [src]="_DomSanitizer.bypassSecurityTrustUrl(img+item.documentphysicalName)" #images (click)="imageOption(i,images)"/>-->
+
+    </div>
+
+  </div>
+  <ion-item-divider color="light">
+    Compliance Documents
+
+  </ion-item-divider>
+  <ion-list>
+      <ion-item  *ngFor="let item of documents" text-wrap>
+        <h2>{{item.documentName}}</h2>
+        <p>{{item.submissionDate}}</p>
+        <p>{{item.documentDesc}}</p>
+        <button ion-button clear item-end (click)="openDoc(item.docUrl,item.type)">View</button>
+      </ion-item>
+  </ion-list>
+<!--  <template *ngFor="let d of items">
+    <ion-list>
+      <template *ngFor="let item of d.proofDocument">
+        <ion-item  *ngIf="item.fileType == 'D'">
+          <h2>{{item.documentName}}</h2>
+          <p>{{prodoc.submissionDate}}</p>
+          <p>{{prodoc.documentDesc}}</p>
+          <button ion-button clear item-end (click)="openDoc(item.documentphysicalName)">View</button>
+        </ion-item>
+      </template>
+    </ion-list>
+  </template>-->
+
+</ion-content>
+<!--<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title (click)="attachmentPage()">Add Attachments</ion-title>
+  </ion-toolbar>
+</ion-footer>-->

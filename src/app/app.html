@@ -1,0 +1,16 @@
+<ion-menu [content]="content" >
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title >Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content >
+    <ion-list>
+      <button ion-item (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon> Log Out
+      </button>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>

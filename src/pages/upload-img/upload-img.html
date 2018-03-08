@@ -1,0 +1,37 @@
+<!--
+  Generated template for the UploadImgPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{Pagetitle}}</ion-title>
+    <ion-buttons end>
+      <button (click)="uploadImage()" ion-button icon-only>
+        <ion-icon name="sync"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div>
+
+    <!--<img class="one-image"   *ngFor="let image of item; let i= index"  style="height:120px;"  src="{{image}}"   #images (click)="imageOption(i,images)" />-->
+
+      <img class="one-image" *ngFor="let image of item; let i= index"    style="height:120px;" [src]="_DomSanitizer.bypassSecurityTrustUrl(image.imgUrl)" #images (click)="imageOption(i,images,image.data,image.ext)"/>
+      <!--<img class="one-image"   *ngIf="image.ext != 'png' || image.ext != 'jpg' || image.ext != 'gif'"  style="height:120px;" src="assets/imgs/doc_icon.png" />-->
+
+
+
+
+    <img class="one-image" *ngIf="item.length != 10"  style="height:120px;" (click)="openAttachmentType()" src="assets/imgs/addimg.png"  />
+
+  </div>
+  <!--<button ion-button  full type="submit" class="submitBtn" padding>Submit</button>-->
+</ion-content>
+
